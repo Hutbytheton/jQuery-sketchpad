@@ -18,6 +18,7 @@ $(document).ready(function() {  //I'd comment this better but it's late, I'm a n
 	});
 	$('#pic').click(function() {
 		clearGrid();
+		clearGrid();
 		picReveal();
 	});
 });
@@ -58,9 +59,11 @@ function trace() {
 };
 
 function clearGrid() {
+	$('.husky').remove();
 	$('.traced').removeClass('traced');
 	if (styleTrace) {
 		$('.pixel').css('background-color', '#478FB2');
+		$('.pixel').css('opacity', '1');
 	};
 };
 
@@ -83,8 +86,9 @@ function greyTrace() {
 };
 
 function picReveal() {
-	$('#container').prepend('<img src="husky.jpg" style="width: 960px; height: 960px; position: absolute; z-index: 1;" />');
+	styleTrace = true;
+	$('#container').prepend('<img class="husky" src="husky.jpg" style="width: 960px; height: 960px; position: absolute; z-index: 1;" />');
 	$('.pixel').mouseenter(function() {
 		$(this).fadeTo('slow', 0);
-	})
-}
+	});
+};
